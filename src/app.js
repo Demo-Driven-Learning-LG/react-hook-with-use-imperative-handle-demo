@@ -1,5 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
+import MyInput from "./MyInput.js";
 
 export const App = () => {
-  return <h1> App useImperativeHandle demo</h1>;
+  const ref = useRef(null);
+
+  function handleClick() {
+    ref.current.focus();
+  }
+
+  return (
+    <form>
+      <MyInput placeholder="Enter your name" ref={ref} />
+      <button type="button" onClick={handleClick}>
+        Edit
+      </button>
+    </form>
+  );
 };
