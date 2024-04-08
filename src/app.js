@@ -1,8 +1,15 @@
 import React, { useRef } from "react";
-import MyInput from "./MyInput.js";
+// import MyInput from "./MyInput.js";
+import Post from "./post.js";
 
 export const App = () => {
-  const ref = useRef(null);
+  // const ref = useRef(null);
+  const postRef = useRef(null);
+  console.log("rendered");
+  function handleCommentClick() {
+    console.log("handleCommentClick");
+    postRef.current.scrollAndFocusAddComment();
+  }
 
   function handleClick() {
     ref.current.focus();
@@ -10,10 +17,14 @@ export const App = () => {
 
   return (
     <form>
-      <MyInput placeholder="Enter your name" ref={ref} />
+      {/* <MyInput placeholder="Enter your name" ref={ref} />
       <button type="button" onClick={handleClick}>
         Edit
-      </button>
+      </button> */}
+
+      {/* <hr></hr> */}
+      <button onClick={handleCommentClick}>Write a comment</button>
+      <Post ref={postRef} />
     </form>
   );
 };
